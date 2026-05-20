@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>REAL SENSI ULTRA GOLD</title>
+
+<style>
+
+/* =========================
+   ROOT
+========================= */
+
+:root{
+
+--gold:#ffd700;
+--gold2:#ff9800;
+
+--bg:#050505;
+
+--green:#00ff88;
+--red:#ff3b3b;
+
+}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:
+radial-gradient(circle at top,#2b1a00,#000 70%);
+
+font-family:'Segoe UI',sans-serif;
+
+color:#fff;
+
+overflow-x:hidden;
+
+display:flex;
+
+justify-content:center;
+
+padding:20px;
+}
+
+/* =========================
+   PARTICULAS
+========================= */
+
+.stars{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+z-index:0;
+}
+
+.stars span{
+
+position:absolute;
+
+width:4px;
+height:4px;
+
+border-radius:50%;
+
+background:#ffd700;
+
+box-shadow:
+0 0 10px #ffd700,
+0 0 20px #ff9800;
+
+animation:stars 8s linear infinite;
+}
+
+@keyframes stars{
+
+0%{
+transform:
+translateY(100vh)
+scale(0);
+
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:
+translateY(-10vh)
+scale(1);
+
+opacity:0;
+}
+}
+
+/* =========================
+   ENTRADA
+========================= */
+
+.entry{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:#000;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+align-items:center;
+
+z-index:10;
+}
+
+.logo{
+
+font-size:70px;
+
+font-weight:900;
+
+background:
+linear-gradient(
+180deg,
+#fff7b0,
+#ffd700,
+#ff9800
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 10px #ffd700,
+0 0 30px #ff9800;
+}
+
+.sub{
+
+margin-top:10px;
+
+letter-spacing:4px;
+
+font-size:14px;
+
+color:#ffe082;
+}
+
+.enter{
+
+margin-top:40px;
+
+padding:20px 60px;
+
+border:none;
+
+border-radius:20px;
+
+font-size:22px;
+
+font-weight:900;
+
+cursor:pointer;
+
+color:#fff;
+
+background:
+linear-gradient(
+135deg,
+#ffd700,
+#ff9800
+);
+
+box-shadow:
+0 0 15px #ffd700,
+0 0 40px #ff9800;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+position:relative;
+
+z-index:2;
+
+display:none;
+
+width:100%;
+max-width:450px;
+
+background:
+rgba(10,10,10,.95);
+
+border:
+1px solid rgba(255,215,0,.15);
+
+border-radius:30px;
+
+padding:25px;
+
+box-shadow:
+0 0 20px rgba(255,215,0,.08),
+0 0 40px rgba(255,174,0,.05);
+}
+
+.header{
+
+text-align:center;
+
+margin-bottom:25px;
+}
+
+.header h1{
+
+font-size:42px;
+
+font-weight:900;
+
+background:
+linear-gradient(
+180deg,
+#fff7b0,
+#ffd700,
+#ff9800
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.header p{
+
+margin-top:8px;
+
+font-size:12px;
+
+letter-spacing:3px;
+
+color:#ffe082;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.field{
+
+margin-bottom:16px;
+}
+
+.field label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-size:13px;
+
+font-weight:700;
+
+color:#ffe082;
+}
+
+input,
+select{
+
+width:100%;
+
+padding:16px;
+
+border-radius:15px;
+
+border:
+1px solid rgba(255,215,0,.12);
+
+background:#101010;
+
+color:#fff;
+
+font-size:14px;
+
+outline:none;
+}
+
+input:focus,
+select:focus{
+
+border-color:#ffd700;
+
+box-shadow:
+0 0 10px rgba(255,215,0,.25);
+}
+
+/* =========================
+   BOTAO
+========================= */
+
+.btn{
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:18px;
+
+font-weight:900;
+
+cursor:pointer;
+
+color:#fff;
+
+background:
+linear-gradient(
+135deg,
+#ffd700,
+#ff9800
+);
+
+box-shadow:
+0 0 15px #ffd700,
+0 0 35px #ff9800;
+}
+
+/* =========================
+   LOADER
+========================= */
+
+.loader{
+
+display:none;
+
+margin-top:35px;
+
+text-align:center;
+}
+
+.scan-circle{
+
+width:240px;
+height:240px;
+
+margin:auto;
+
+border-radius:50%;
+
+border:4px solid #ffd700;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+overflow:hidden;
+
+box-shadow:
+0 0 20px #ffd700,
+0 0 60px #ff9800,
+inset 0 0 20px rgba(255,215,0,.3);
+
+animation:
+pulseScan 1.5s infinite alternate;
+}
+
+@keyframes pulseScan{
+
+100%{
+transform:scale(1.04);
+}
+}
+
+.scan-circle::before{
+
+content:"";
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+border-radius:50%;
+
+border:2px solid rgba(255,215,0,.5);
+
+animation:
+rotate 4s linear infinite;
+}
+
+@keyframes rotate{
+
+100%{
+transform:rotate(360deg);
+}
+}
+
+.scan-circle::after{
+
+content:"";
+
+position:absolute;
+
+width:80%;
+height:2px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#ffd700,
+transparent
+);
+
+box-shadow:
+0 0 15px #ffd700,
+0 0 30px #ff9800;
+
+animation:
+scanner 2s infinite alternate;
+}
+
+@keyframes scanner{
+
+0%{
+transform:
+translateY(-70px);
+}
+
+100%{
+transform:
+translateY(70px);
+}
+}
+
+/* =========================
+   OLHO NEON GOLD
+========================= */
+
+.eye{
+
+width:140px;
+height:140px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+border:
+4px solid #ffd700;
+
+box-shadow:
+0 0 15px #ffd700,
+0 0 35px #ff9800,
+inset 0 0 20px rgba(255,215,0,.4);
+
+animation:
+eyePulse 1.5s infinite alternate;
+}
+
+@keyframes eyePulse{
+
+0%{
+transform:scale(1);
+}
+
+100%{
+transform:scale(1.08);
+}
+}
+
+.eye::before{
+
+content:"";
+
+position:absolute;
+
+width:100px;
+height:100px;
+
+border-radius:50%;
+
+border:
+3px solid rgba(255,215,0,.7);
+
+animation:
+rotateEye 5s linear infinite;
+
+box-shadow:
+0 0 20px #ffd700,
+0 0 40px #ff9800;
+}
+
+@keyframes rotateEye{
+
+100%{
+transform:rotate(360deg);
+}
+}
+
+.eye::after{
+
+content:"";
+
+position:absolute;
+
+width:170px;
+height:2px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#ffd700,
+transparent
+);
+
+box-shadow:
+0 0 15px #ffd700,
+0 0 25px #ff9800;
+
+animation:
+scannerEye 2s infinite alternate;
+}
+
+@keyframes scannerEye{
+
+0%{
+transform:
+translateY(-60px);
+}
+
+100%{
+transform:
+translateY(60px);
+}
+}
+
+.eye-core{
+
+width:45px;
+height:45px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+#fff7b0,
+#ffd700,
+#ff9800
+);
+
+box-shadow:
+0 0 20px #ffd700,
+0 0 50px #ff9800,
+0 0 80px #ffae00;
+
+animation:
+corePulse .6s infinite alternate;
+}
+
+@keyframes corePulse{
+
+0%{
+transform:scale(1);
+}
+
+100%{
+transform:scale(1.25);
+}
+}
+
+.scan-percent{
+
+margin-top:20px;
+
+font-size:70px;
+
+font-weight:900;
+
+color:#ffd700;
+
+text-shadow:
+0 0 10px #ffd700,
+0 0 30px #ff9800;
+}
+
+.scan-line{
+
+width:220px;
+height:8px;
+
+margin:15px auto;
+
+border-radius:20px;
+
+background:#111;
+
+overflow:hidden;
+}
+
+.scan-fill{
+
+height:100%;
+width:0%;
+
+background:
+linear-gradient(
+90deg,
+#ffd700,
+#ff9800
+);
+
+box-shadow:
+0 0 10px #ffd700,
+0 0 25px #ff9800;
+}
+
+.scan-text{
+
+margin-top:10px;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+font-weight:800;
+
+color:#ffd700;
+}
+
+.scan-target{
+
+margin-top:12px;
+
+font-size:18px;
+
+font-weight:900;
+
+color:#fff;
+}
+
+/* =========================
+   RESULTADO
+========================= */
+
+.result{
+
+display:none;
+
+margin-top:25px;
+}
+
+.sensi-box{
+
+background:
+rgba(255,215,0,.03);
+
+border:
+1px solid rgba(255,215,0,.12);
+
+border-radius:25px;
+
+padding:22px;
+}
+
+.sensi-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+}
+
+.sensi-title{
+
+font-size:24px;
+
+font-weight:900;
+
+color:#ffd700;
+}
+
+.sensi-badge{
+
+padding:10px 16px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:900;
+
+background:
+linear-gradient(
+135deg,
+#ffd700,
+#ff9800
+);
+}
+
+.sensi-item{
+
+margin-bottom:24px;
+}
+
+.sensi-info{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-bottom:10px;
+}
+
+.sensi-name{
+
+font-size:18px;
+
+font-weight:700;
+}
+
+.sensi-number{
+
+font-size:26px;
+
+font-weight:900;
+
+color:#ffd700;
+}
+
+.sensi-bar{
+
+width:100%;
+
+height:18px;
+
+background:#181818;
+
+border-radius:20px;
+
+overflow:hidden;
+}
+
+.sensi-fill{
+
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+#ffd700,
+#ff9800
+);
+
+box-shadow:
+0 0 10px #ffd700,
+0 0 20px #ff9800;
+}
+
+.fire-box{
+
+margin-top:30px;
+
+padding:30px;
+
+border-radius:25px;
+
+text-align:center;
+
+background:
+rgba(255,215,0,.03);
+
+border:
+1px solid rgba(255,215,0,.15);
+}
+
+.fire-number{
+
+font-size:65px;
+
+font-weight:900;
+
+color:#ffd700;
+}
+
+.fire-text{
+
+margin-top:10px;
+
+font-size:15px;
+
+letter-spacing:2px;
+
+color:#ffe082;
+}
+
+.dpi-result{
+
+margin-top:20px;
+
+text-align:center;
+
+font-size:18px;
+
+font-weight:900;
+
+color:#ffd700;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars">
+
+<span style="left:10%;animation-duration:6s;"></span>
+<span style="left:20%;animation-duration:8s;"></span>
+<span style="left:35%;animation-duration:7s;"></span>
+<span style="left:50%;animation-duration:9s;"></span>
+<span style="left:65%;animation-duration:6s;"></span>
+<span style="left:80%;animation-duration:8s;"></span>
+<span style="left:90%;animation-duration:7s;"></span>
+
+</div>
+
+<!-- ENTRADA -->
+
+<div class="entry">
+
+<div class="logo">
+REAL SENSI
+</div>
+
+<div class="sub">
+ULTRA GOLD V22
+</div>
+
+<button
+class="enter"
+onclick="abrirPainel()"
+>
+⚡ ENTRAR
+</button>
+
+</div>
+
+<!-- CONTAINER -->
+
+<div class="container">
+
+<div class="header">
+
+<h1>
+REAL SENSI
+</h1>
+
+<p>
+GERADOR PROFISSIONAL
+</p>
+
+</div>
+
+<div class="field">
+
+<label>MARCA</label>
+
+<input type="text" id="marca" placeholder="Samsung">
+
+</div>
+
+<div class="field">
+
+<label>MODELO</label>
+
+<input type="text" id="modelo" placeholder="Galaxy A54">
+
+</div>
+
+<div class="field">
+
+<label>INFLUENCIADOR</label>
+
+<input type="text" id="famoso" placeholder="CEROL">
+
+</div>
+
+<div class="field">
+
+<label>TIPO DA SENSI</label>
+
+<select id="tipo">
+
+<option value="ALTA">🚀 ALTA</option>
+<option value="MEDIA">🎯 MÉDIA</option>
+<option value="BAIXA">🛡️ BAIXA</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>MODO</label>
+
+<select id="modo">
+
+<option value="NORMAL">🟢 NORMAL</option>
+<option value="HACKER">🔥 HACKER</option>
+<option value="ESPECIAL">⚡ ESPECIAL</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>CALIBRAGEM</label>
+
+<select id="calibragem">
+
+<option>⚖️ EQUILIBRADA</option>
+<option>🎯 CALIBRADA</option>
+<option>🔥 PRO PLAYER</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>USAR DPI?</label>
+
+<select id="usarDpi" onchange="toggleDpi()">
+
+<option value="OFF">❌ NÃO</option>
+<option value="ON">🔥 SIM</option>
+
+</select>
+
+</div>
+
+<div
+class="field"
+id="dpiField"
+style="display:none;"
+>
+
+<label>DPI</label>
+
+<input type="number" id="dpi" placeholder="720">
+
+</div>
+
+<button class="btn" onclick="processar()">
+⚡ GERAR SENSI
+</button>
+
+<!-- LOADER -->
+
+<div class="loader" id="loader">
+
+<div class="scan-circle">
+
+<div class="eye">
+
+<div class="eye-core"></div>
+
+</div>
+
+</div>
+
+<div
+class="scan-percent"
+id="scanPercent"
+>
+0%
+</div>
+
+<div class="scan-line">
+
+<div
+class="scan-fill"
+id="scanFill"
+></div>
+
+</div>
+
+<div class="scan-text">
+ESCANEANDO GEOMETRIA...
+</div>
+
+<div
+class="scan-target"
+id="armaNome"
+>
+ESCANEANDO...
+</div>
+
+</div>
+
+<!-- RESULTADO -->
+
+<div class="result" id="result">
+
+<div id="cards"></div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =========================
+   ALVOS
+========================= */
+
+const scans=[
+
+"MP40 PREDADORA",
+"M1014 EVO",
+"AK DRAGÃO",
+"UMP BOOYAH",
+"SCAR TITAN",
+"M1887 ONE PUNCH"
+
+];
+
+/* =========================
+   ABRIR
+========================= */
+
+function abrirPainel(){
+
+document.querySelector(".entry")
+.style.display="none";
+
+document.querySelector(".container")
+.style.display="block";
+}
+
+/* =========================
+   DPI
+========================= */
+
+function toggleDpi(){
+
+const usar=
+document.getElementById("usarDpi").value;
+
+document.getElementById("dpiField")
+.style.display=
+usar==="ON"
+?"block"
+:"none";
+}
+
+/* =========================
+   PROCESSAR
+========================= */
+
+function processar(){
+
+document.getElementById("loader")
+.style.display="block";
+
+document.getElementById("result")
+.style.display="none";
+
+const armaNome=
+document.getElementById("armaNome");
+
+const scanPercent=
+document.getElementById("scanPercent");
+
+const scanFill=
+document.getElementById("scanFill");
+
+let percent=0;
+
+let troca=
+setInterval(()=>{
+
+const alvo=
+scans[
+Math.floor(
+Math.random()*scans.length
+)
+];
+
+armaNome.innerText=
+"ESCANEANDO : "+alvo;
+
+},180);
+
+let scan=
+setInterval(()=>{
+
+percent+=4;
+
+if(percent>100){
+
+percent=100;
+}
+
+scanPercent.innerText=
+percent+"%";
+
+scanFill.style.width=
+percent+"%";
+
+},100);
+
+setTimeout(()=>{
+
+clearInterval(troca);
+
+clearInterval(scan);
+
+document.getElementById("loader")
+.style.display="none";
+
+gerar();
+
+},2600);
+
+}
+
+/* =========================
+   BARRAS
+========================= */
+
+function criarBarra(nome,valor){
+
+if(valor>200){
+valor=200;
+}
+
+return`
+
+<div class="sensi-item">
+
+<div class="sensi-info">
+
+<div class="sensi-name">
+${nome}
+</div>
+
+<div class="sensi-number">
+${valor}
+</div>
+
+</div>
+
+<div class="sensi-bar">
+
+<div
+class="sensi-fill"
+style="width:${valor}%"
+></div>
+
+</div>
+
+</div>
+
+`;
+}
+
+/* =========================
+   GERAR
+========================= */
+
+function gerar(){
+
+let sensi={
+
+geral:200,
+red:195,
+mira2:175,
+mira4:160,
+awm:145,
+livre:130,
+botao:52
+
+};
+
+const dpi=
+document.getElementById("dpi").value;
+
+document.getElementById("cards")
+.innerHTML=
+
+`
+
+<div class="sensi-box">
+
+<div class="sensi-top">
+
+<div class="sensi-title">
+SENSIBILIDADE GERADA
+</div>
+
+<div class="sensi-badge">
+⚡ HACKER
+</div>
+
+</div>
+
+${criarBarra("GERAL",sensi.geral)}
+
+${criarBarra("PONTO VERMELHO",sensi.red)}
+
+${criarBarra("MIRA 2X",sensi.mira2)}
+
+${criarBarra("MIRA 4X",sensi.mira4)}
+
+${criarBarra("AWM",sensi.awm)}
+
+${criarBarra("OLHADINHA",sensi.livre)}
+
+<div class="fire-box">
+
+<div class="fire-number">
+${sensi.botao}
+</div>
+
+<div class="fire-text">
+TAMANHO DO BOTÃO
+</div>
+
+</div>
+
+${
+dpi
+?`
+
+<div class="dpi-result">
+DPI DEFINIDA : ${dpi}
+</div>
+
+`
+:""
+}
+
+</div>
+
+`;
+
+document.getElementById("result")
+.style.display="block";
+}
+
+</script>
+
+</body>
+  </html>
